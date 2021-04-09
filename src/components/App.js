@@ -6,12 +6,21 @@ import GlobalStyles from "../styles";
 import Home from "./Home";
 import Nav from "./Nav";
 import WelcomePage from "./WelcomePage";
+import Footer from "./Footer";
 
 const App = () => {
   const links = [
     { text: "Home", to: "/" },
     { text: "Test", to: "/test" },
+  ];
+
+  const footerLinks = [
+    { text: "Home", to: "/" },
     { text: "Test", to: "/test" },
+    { text: "Privacy Policy", to: "/privacy-policy" },
+    { text: "Privacy Policy", to: "/privacy-policy" },
+    { text: "Privacy Policy", to: "/privacy-policy" },
+    { text: "Privacy Policy", to: "/privacy-policy" },
   ];
 
   return (
@@ -30,6 +39,13 @@ const App = () => {
             <Home />
           </Route>
         </Switch>
+        <Footer
+          links={footerLinks}
+          logo="Hello World"
+          bgColor="#000011"
+          color="#eee"
+          height="20rem"
+        />
       </ThemeProvider>
     </Router>
   );

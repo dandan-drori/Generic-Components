@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
-const Hamburger = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+const Hamburger = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <Container onClick={() => setIsMenuOpen(!isMenuOpen)}>
       <Line isMenuOpen={isMenuOpen}></Line>
@@ -15,6 +13,7 @@ export default Hamburger;
 
 const Container = styled.div`
   padding: ${({ padding }) => (padding ? padding : "2rem")};
+  z-index: 2;
 `;
 
 const Line = styled.div`
@@ -24,12 +23,12 @@ const Line = styled.div`
   border-radius: ${({ borderRadius }) =>
     borderRadius ? borderRadius : "1.5rem"};
   transition: ${({ transition }) =>
-    transition ? transition : "all 0.5s ease-in-out"};
+    transition ? transition : "all 0.3s ease-in-out"};
 
   ${({ isMenuOpen }) =>
     isMenuOpen &&
     css`
-      transform: translateX(-50px);
+      transform: translateX(50px);
       background: transparent;
     `}
 
@@ -37,12 +36,12 @@ const Line = styled.div`
   &::after {
     content: "";
     position: absolute;
-    width: ${({ width }) => (width ? width : "5rem")};
+    width: ${({ width }) => (width ? width : "4rem")};
     height: ${({ height }) => (height ? height : "0.4rem")};
     border-radius: ${({ borderRadius }) =>
       borderRadius ? borderRadius : "1.5rem"};
     transition: ${({ transition }) =>
-      transition ? transition : "all 0.5s ease-in-out"};
+      transition ? transition : "all 0.3s ease-in-out"};
     background-color: ${({ bgColor }) => (bgColor ? bgColor : "#050505")};
   }
 
@@ -50,7 +49,7 @@ const Line = styled.div`
     ${({ isMenuOpen }) =>
       isMenuOpen
         ? css`
-            transform: rotate(45deg) translate(35px, -35px);
+            transform: rotate(45deg) translate(-35px, 35px);
           `
         : css`
             transform: translateY(1.2rem);
@@ -61,7 +60,7 @@ const Line = styled.div`
     ${({ isMenuOpen }) =>
       isMenuOpen
         ? css`
-            transform: rotate(-45deg) translate(35px, 35px);
+            transform: rotate(-45deg) translate(-35px, -35px);
           `
         : css`
             transform: translateY(-1.2rem);
