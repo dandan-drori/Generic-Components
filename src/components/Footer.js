@@ -41,15 +41,23 @@ const Container = styled.div`
 `;
 
 const Links = styled.ul`
-  width: 30%;
+  width: ${({ width }) => (width ? width : "50%")};
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ flexDirection }) =>
+    flexDirection ? flexDirection : "column"};
   flex-wrap: wrap;
+
+  @media only screen and (min-width: 768px) {
+    width: ${({ width }) => (width ? width : "30%")};
+  }
 `;
 
 const ListItem = styled.li`
-  margin: 0.5rem 0;
-  padding: 1rem 0;
+  margin: ${({ margin }) => (margin ? margin : "0.5rem 0")};
+
+  @media only screen and (min-width: 768px) {
+    padding: ${({ padding }) => (padding ? padding : "1rem 0")};
+  }
 `;
 
 const StyledLink = styled(Link)`
